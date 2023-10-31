@@ -10,7 +10,7 @@ namespace MyBlazorShop.Libraries.Services.ShoppingCart.Models
         /// <summary>
         /// Product type.
         /// </summary>
-        public ProductModel Product { get; }
+        public SurfBoardModel Product { get; }
 
         /// <summary>
         /// Price of the product.
@@ -38,7 +38,7 @@ namespace MyBlazorShop.Libraries.Services.ShoppingCart.Models
         /// </summary>
         /// <param name="product">Product type.</param>
         /// <param name="quantity">Quantity of the product.</param>
-        public ShoppingCartItemModel(ProductModel product, int quantity)
+        public ShoppingCartItemModel(SurfBoardModel product, int quantity)
         {
             Product = product;
             Price = product.Price;
@@ -50,7 +50,7 @@ namespace MyBlazorShop.Libraries.Services.ShoppingCart.Models
         /// </summary>
         /// <param name="product">Product type.</param>
         /// <param name="quantity">Quantity of the product.</param>
-        public void UpdateQuantity(ProductModel product, int quantity)
+        public void UpdateQuantity(SurfBoardModel product, int quantity)
         {
             Price = product.Price;
             Quantity += quantity;

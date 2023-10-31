@@ -28,9 +28,9 @@ namespace MyBlazorShop.Libraries.Services.Product
         /// </summary>
         /// <param name="sku">The unique sku reference.</param>
         /// <returns>A <see cref="ProductModel"/> type.</returns>
-        public ProductModel? Get(string sku)
+        public SurfBoardModel? Get(int sku)
         {
-            return _storageService.Products.FirstOrDefault(p => p.Sku == sku);
+            return _storageService.Products.FirstOrDefault(p => p.Id == sku);
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace MyBlazorShop.Libraries.Services.Product
         /// </summary>
         /// <param name="slug">The slug of the product</param>
         /// <returns></returns>
-        public ProductModel? GetBySlug(string slug)
+        public SurfBoardModel? GetBySlug(int slug)
         {
             return _storageService.Products.FirstOrDefault(p => p.Slug == slug);
         }
@@ -47,7 +47,7 @@ namespace MyBlazorShop.Libraries.Services.Product
         /// Gets all products
         /// </summary>
         /// <returns>A <see cref="IList<ProductModel>"/> type.</returns>
-        public IList<ProductModel> GetAll()
+        public IList<SurfBoardModel> GetAll()
         {
             return _storageService.Products.ToList();
         }

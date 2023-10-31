@@ -11,7 +11,7 @@ namespace MyBlazorShop.Libraries.Services.Storage
         /// <summary>
         /// Stores a list of products.
         /// </summary>
-        IList<ProductModel> Products { get; }
+        IList<SurfBoardModel> Products { get; }
 
         /// <summary>
         /// Stores the shopping cart.
