@@ -12,7 +12,7 @@ namespace MyBlazorShop.Libraries.Services.Product.Models
     public interface IProductAddToCart
     {
         // An instance of the product
-        ProductModel? Product { get; set; }
+        SurfBoardModel? Product { get; set; }
 
         // The quantity wishing to be added to the cart
         int? Quantity { get; set; }

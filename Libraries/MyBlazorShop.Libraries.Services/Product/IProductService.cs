@@ -12,19 +12,19 @@ namespace MyBlazorShop.Libraries.Services.Product
         /// </summary>
         /// <param name="sku">The unique sku reference.</param>
         /// <returns>A <see cref="ProductModel"/> type.</returns>
-        ProductModel? Get(string sku);
+        SurfBoardModel? Get(int sku);
 
         /// <summary>
         /// Get a product by slug.
         /// </summary>
         /// <param name="slug">The slug of the product</param>
         /// <returns></returns>
-        ProductModel? GetBySlug(string slug);
+        SurfBoardModel? GetBySlug(string slug);
 
         /// <summary>
         /// Gets all products
         /// </summary>
         /// <returns>A <see cref="IList<ProductModel>"/> type.</returns>
-        IList<ProductModel> GetAll();
+        IList<SurfBoardModel> GetAll();
     }
 }
