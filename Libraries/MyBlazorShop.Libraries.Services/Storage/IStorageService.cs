@@ -18,5 +18,11 @@ namespace MyBlazorShop.Libraries.Services.Storage
         /// </summary>
         ShoppingCartModel ShoppingCart { get; }
 
+        /// <summary>
+        /// Overwrites the list of products.
+        /// </summary>
+        /// <param name="products">The new list of products.</param>
+        void SetProducts(IList<SurfBoardModel> products);
+
     }
 }

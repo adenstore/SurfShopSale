@@ -1,7 +1,9 @@
 ﻿@using MyBlazorShop.Libraries.Services.Product
+@using MyBlazorShop.Libraries.Services.Storage
 @using MyBlazorShop.Libraries.Services.Product.Models
 @page "/"
 @inject IProductService productService
+@inject IStorageService storageService
 <PageTitle>Product listings</PageTitle>
 <HeadContent>
     <meta name="description" content="Product listing page" />
@@ -27,12 +29,23 @@
 }
 
 @code {
+    [Parameter]
     public IList<SurfBoardModel> Products { get; set; }
 }
 @functions {
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-        Products = productService.GetAll();
-        base.OnInitialized();
+        HttpClient httpClient = new HttpClient();
+        List<SurfBoardModel>? surfboards = await httpClient.GetFromJsonAsync<List<SurfBoardModel>>("https://localhost:7101/GetAll");
+
+        if (surfboards != null)
+        {
+            Products = surfboards;
+            storageService.SetProducts(Products);
+        }
+        else
+            throw new Exception("No surfboards could be retrieved from the API! 😭");
+
+        await base.OnInitializedAsync();
     }
 }

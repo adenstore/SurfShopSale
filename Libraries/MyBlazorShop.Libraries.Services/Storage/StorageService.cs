@@ -24,26 +24,25 @@ namespace MyBlazorShop.Libraries.Services.Storage
         /// </summary>
         public StorageService()
         {
-            HttpClient httpClient = new HttpClient();
-            Products = new List<SurfBoardModel>();
+            Products = new List<SurfBoardModel>();  
             ShoppingCart = new ShoppingCartModel();
 
-            //Products = (IList<SurfBoardModel>)httpClient.GetFromJsonAsync<SurfBoardModel[]>("https://localhost:7101/GetAll");
-            Products.Add(new SurfBoardModel()
-            {
-                Id = 1,
-                Name = "Mit lange bræt 😎",
-                Width = 200,
-                Height = 200,
-                Thickness = 69,
-                Volume = 100,
-                Price = 100,
-                BoardType = new BoardTypeModel()
-                {
-                    Name = "Looooongboard"
-                },
-                Equipments = new List<EquipmentModel>()
-            });
+            // Products = GetAllSurfboardModelsFromApi();
+            //Products.Add(new SurfBoardModel()
+            //{
+            //    Id = 1,
+            //    Name = "Mit lange bræt 😎",
+            //    Width = 200,
+            //    Height = 200,
+            //    Thickness = 69,
+            //    Volume = 100,
+            //    Price = 100,
+            //    BoardType = new BoardTypeModel()
+            //    {
+            //        Name = "Looooongboard"
+            //    },
+            //    Equipments = new List<EquipmentModel>()
+            //});
 
             //    // Store a list of all the products for the online shop.
             //    AddProduct(new ProductModel("BUBBLES-GUMBALL-APRON", "A Gumball for Your Thoughts Apron", 24, "bubbles-gumball-apron-black.jpg"));
@@ -55,6 +54,8 @@ namespace MyBlazorShop.Libraries.Services.Storage
             //    AddProduct(new ProductModel("DOLORES-COMPUTE-TSHIRT", "I Compute, Therefore I Am T-shirt", 26, "dolores-compute-tshirt-black.jpg"));
             //    AddProduct(new ProductModel("REX-MICROCONTROLLERS-TSHIRT", "Great Microcontrollers Think Alike T-shirt", 26, "rex-microcontrollers-tshirt-black.jpg"));
         }
+
+        public void SetProducts(IList<SurfBoardModel> products) => Products = products;
 
         /// <summary>
         /// Adds a product to the storage.
