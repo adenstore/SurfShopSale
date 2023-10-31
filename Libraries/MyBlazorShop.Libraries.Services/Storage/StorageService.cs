@@ -28,7 +28,22 @@ namespace MyBlazorShop.Libraries.Services.Storage
             Products = new List<SurfBoardModel>();
             ShoppingCart = new ShoppingCartModel();
 
-           Products = (IList<SurfBoardModel>)httpClient.GetFromJsonAsync<SurfBoardModel[]>("https://localhost:7101/api/SurfShopAPI/GetAll");
+            //Products = (IList<SurfBoardModel>)httpClient.GetFromJsonAsync<SurfBoardModel[]>("https://localhost:7101/GetAll");
+            Products.Add(new SurfBoardModel()
+            {
+                Id = 1,
+                Name = "Mit lange bræt 😎",
+                Width = 200,
+                Height = 200,
+                Thickness = 69,
+                Volume = 100,
+                Price = 100,
+                BoardType = new BoardTypeModel()
+                {
+                    Name = "Looooongboard"
+                },
+                Equipments = new List<EquipmentModel>()
+            });
 
             //    // Store a list of all the products for the online shop.
             //    AddProduct(new ProductModel("BUBBLES-GUMBALL-APRON", "A Gumball for Your Thoughts Apron", 24, "bubbles-gumball-apron-black.jpg"));

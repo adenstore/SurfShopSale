@@ -38,7 +38,7 @@ namespace MyBlazorShop.Libraries.Services.Product
         /// </summary>
         /// <param name="slug">The slug of the product</param>
         /// <returns></returns>
-        public SurfBoardModel? GetBySlug(int slug)
+        public SurfBoardModel? GetBySlug(string slug)
         {
             return _storageService.Products.FirstOrDefault(p => p.Slug == slug);
         }

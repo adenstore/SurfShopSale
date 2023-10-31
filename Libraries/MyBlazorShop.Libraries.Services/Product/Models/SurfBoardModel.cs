@@ -28,11 +28,11 @@ namespace MyBlazorShop.Libraries.Services.Product.Models
         /// <summary>
         /// The route slug of the product.
         /// </summary>
-        public int Slug
+        public string Slug
         {
             get
             {
-                return Id;
+                return Id.ToString();
             }
         }
 

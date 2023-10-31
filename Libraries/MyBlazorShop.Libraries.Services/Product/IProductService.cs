@@ -19,7 +19,7 @@ namespace MyBlazorShop.Libraries.Services.Product
         /// </summary>
         /// <param name="slug">The slug of the product</param>
         /// <returns></returns>
-        SurfBoardModel? GetBySlug(int slug);
+        SurfBoardModel? GetBySlug(string slug);
 
         /// <summary>
         /// Gets all products
