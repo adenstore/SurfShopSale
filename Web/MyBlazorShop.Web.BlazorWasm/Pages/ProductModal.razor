@@ -1,11 +1,43 @@
 ﻿@using MyBlazorShop.Libraries.Services.Product.Models;
 
-<h3>ProductModal</h3>
-
 <div class="row">
-   <div class="col-5 col-md-4"> Procut navn: </div>
-   <div class="col-9 col-md-9"> @surfBoardModel.Name </div>
-
+    <div class="col-5 col-md-3 text-end">Id:</div>
+    <div class="col-7 col-md-9">@surfBoardModel.Id</div>
+</div>
+<div class="row">
+    <div class="col-5 col-md-3 text-end">Navn:</div>
+    <div class="col-7 col-md-9">@surfBoardModel.Name</div>
+</div>
+<div class="row">
+    <div class="col-5 col-md-3 text-end">Type:</div>
+    <div class="col-7 col-md-9">@surfBoardModel.BoardType.Name</div>
+</div>
+<div class="row">
+    <div class="col-5 col-md-3 text-end">Pris:</div>
+    <div class="col-7 col-md-9">@surfBoardModel.Price</div>
+</div>
+<div class="row">
+    <div class="col-5 col-md-3 text-end">Højde:</div>
+    <div class="col-7 col-md-9">@surfBoardModel.Height</div>
+</div>
+<div class="row">
+    <div class="col-5 col-md-3 text-end">Bredde:</div>
+    <div class="col-7 col-md-9">@surfBoardModel.Width</div>
+</div>
+<div class="row">
+    <div class="col-5 col-md-3 text-end">Tyggelse:</div>
+    <div class="col-7 col-md-9">@surfBoardModel.Thickness</div>
+</div>
+<div class="row">
+    <div class="col-5 col-md-3 text-end">Volume:</div>
+    <div class="col-7 col-md-9">@surfBoardModel.Volume</div>
+</div>
+<div class="row">
+    <div class="col-5 col-md-3 text-end">Udstyr:</div>
+    @foreach (var equipment in surfBoardModel.Equipments)
+    {
+        <div class="col-7 col-md-9">@equipment.Name</div> 
+    }
 </div>
 
 @code {

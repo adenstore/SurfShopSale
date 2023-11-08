@@ -35,7 +35,7 @@
 
     public int pagesize  = 5;
     [Parameter]
-    public int CurrentPage { get; set; }
+    public int CurrentPage { get; set; } = 1;
     private IList<SurfBoardModel> DisplayedProducts { get; set; }
 
     private int TotalPages { get; set; }
@@ -48,8 +48,8 @@
             .ToList();
     }
 
-   
-    private void HandlePageChange(int newPage)
+
+    private async void HandlePageChange(int newPage)
     {
         if (newPage >= 1 && newPage <= TotalPages)
         {
