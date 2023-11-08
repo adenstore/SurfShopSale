@@ -1,6 +1,7 @@
 ﻿@using MyBlazorShop.Libraries.Services.Product
 @using MyBlazorShop.Libraries.Services.Storage
 @using MyBlazorShop.Libraries.Services.Product.Models
+@using BlazorBootstrap;
 @page "/"
 @inject IProductService productService
 @inject IStorageService storageService
@@ -17,20 +18,46 @@
             <div class="display:flex flex-grow:1 flex-wrap:wrap margin-bottom:-32 margin-horizontal:-16">
                 <div class="display:flex flex-direction:column flex-grow:0 flex-shrink:0 margin-bottom:32 padding-horizontal:16 width:100 @@mq-768--width:100">
                     <ul class="display:flex flex-grow:1 flex-wrap:wrap margin-bottom:-32 margin-horizontal:-16">
-                        @foreach(var product in Products)
+                        @foreach (var product in DisplayedProducts)
                         {
                             <ProductListingItem Product="product"></ProductListingItem>
-                        }                        
+                        }
                     </ul>
                 </div>
             </div>
         </div>
     </main>
 }
-
+<Pagination TotalPages="TotalPages" ActivePageNumber="CurrentPage" PageChanged="HandlePageChange" Alignment="Alignment.Center" Size="PaginationSize.Large"/>
 @code {
     [Parameter]
     public IList<SurfBoardModel> Products { get; set; }
+
+    public int pagesize  = 5;
+    [Parameter]
+    public int CurrentPage { get; set; }
+    private IList<SurfBoardModel> DisplayedProducts { get; set; }
+
+    private int TotalPages { get; set; }
+
+    private void SetDisplayedProducts()
+    {
+        DisplayedProducts = Products
+            .Skip((CurrentPage - 1) * pagesize)
+            .Take(pagesize)
+            .ToList();
+    }
+
+   
+    private void HandlePageChange(int newPage)
+    {
+        if (newPage >= 1 && newPage <= TotalPages)
+        {
+            CurrentPage = newPage;
+            SetDisplayedProducts(); 
+        }
+    }
+
 }
 @functions {
     protected override async Task OnInitializedAsync()
@@ -46,6 +73,10 @@
         else
             throw new Exception("No surfboards could be retrieved from the API! 😭");
 
+        TotalPages = (int)Math.Ceiling((double)Products.Count / pagesize);   
+        SetDisplayedProducts();
         await base.OnInitializedAsync();
+
     }
 }
+

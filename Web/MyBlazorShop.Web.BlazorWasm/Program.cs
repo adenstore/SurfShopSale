@@ -7,6 +7,7 @@ using MyBlazorShop.Libraries.Services.ShoppingCart;
 using Microsoft.Extensions.Options;
 using System;
 
+
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
@@ -15,5 +16,6 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 builder.Services.AddSingleton<IStorageService, StorageService>();
 builder.Services.AddSingleton<IShoppingCartService, ShoppingCartService>();
 builder.Services.AddTransient<IProductService, ProductService>();
+builder.Services.AddBlazorBootstrap(); // Add this line
 
 await builder.Build().RunAsync();

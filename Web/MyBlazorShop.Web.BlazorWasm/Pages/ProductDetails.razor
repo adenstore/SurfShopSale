@@ -2,6 +2,7 @@
 @using MyBlazorShop.Libraries.Services.Product.Models
 @using MyBlazorShop.Libraries.Services.ShoppingCart
 @using MyBlazorShop.Web.BlazorWasm.Shared.Layout
+@using BlazorBootstrap
 @page "/product/{slug}"
 @inject IProductService productService
 @inject IShoppingCartService shoppingCartService
@@ -62,6 +63,7 @@
            </div>
        </div>
     </main>
+
 @code {
     public SurfBoardModel? Product { get; set; }
 
