@@ -46,10 +46,7 @@
 @functions {
     public async void AddToCart()
     {
-        var parameters = new Dictionary<string, object>();
-        parameters.Add(Product.Id.ToString(), Product.Name);
-
-        var confirmation = await dialog.ShowAsync<ProductListingItem>($"Are you sure you want to add {Quantity} to the card?", parameters);
+        var confirmation = await dialog.ShowAsync(title: $"Are you sure you want to add {Quantity} to cart?", message1: "", message2: "");
 
         if (confirmation)
         {
@@ -57,6 +54,7 @@
             {
                 shoppingCartService.AddProduct(Product, Quantity ?? 1);
                 Quantity = null;
+                ToastService.Notify(new ToastMessage(ToastType.Success, $"Successfully added {Quantity} to cart."));
             }
         }
         else
