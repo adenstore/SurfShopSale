@@ -7,6 +7,7 @@ using MyBlazorShop.Libraries.Services.ShoppingCart;
 using Microsoft.Extensions.Options;
 using System;
 
+
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
