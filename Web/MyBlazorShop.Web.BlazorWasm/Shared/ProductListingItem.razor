@@ -29,6 +29,7 @@
                     </span>
                 }
             </button>
+            <ConfirmDialog @ref="dialog" />
         </div>
     </li>
 }
@@ -37,14 +38,28 @@
     public SurfBoardModel? Product { get; set; }
 
     public int? Quantity { get; set; }
+
+    private ConfirmDialog dialog = default!;
+
+    [Inject] ToastService ToastService { get; set; } = default!;
 }
 @functions {
-    public void AddToCart()
+    public async void AddToCart()
     {
-        if (Product != null)
+        var confirmation = await dialog.ShowAsync(title: $"Are you sure you want to add {Quantity} to cart?", message1: "", message2: "");
+
+        if (confirmation)
         {
-            shoppingCartService.AddProduct(Product, Quantity ?? 1);
-            Quantity = null;
+            if (Product != null)
+            {
+                shoppingCartService.AddProduct(Product, Quantity ?? 1);
+                Quantity = null;
+                ToastService.Notify(new ToastMessage(ToastType.Success, $"Successfully added {Quantity} to cart."));
+            }
+        }
+        else
+        {
+            ToastService.Notify(new ToastMessage(ToastType.Secondary, "Action canceled."));
         }
     }
 }
