@@ -1,0 +1,56 @@
+﻿@using Microsoft.AspNetCore.SignalR.Client
+
+@page "/help"
+@inject NavigationManager navigationManger
+@implements IAsyncDisposable
+<h3>Help page</h3>
+<br />
+<form>
+    <input @bind-value="Message" type="text">
+     : 
+    <button class="button lg solid gold" type="button">Send Besked</button>
+</form>
+<br />
+@if (Messages?.Any() ?? false)
+{
+    <ul>
+        @foreach(var message in Messages)
+        {
+            <li class="message.TypeName">@message.Message</li>
+        }
+    </ul>
+}
+
+@code {
+    private string? Message { get; set; }
+    private List<LiveChatMessage>? Messages { get; set; }
+    private HubConnection? HubConnection { get; set; }
+}
+@functions{
+    protected override async Task OnInitializedAsync()
+    {
+        Messages = new List<LiveChatMessage>();
+
+        HubConnection = new HubConnectionBuilder()
+        .WithUrl(navigationManger.ToAbsoluteUri("https://localhost:7101/live-chat"))
+        .Build();
+
+        HubConnection.On<string>("ReceiveMessage", (message) =>
+        {
+            Messages.Add(new LiveChatMessage(message, LiveChatEnum.RECEIVED));
+            StateHasChanged();
+        });
+
+        await HubConnection.StartAsync();
+
+        await base.OnInitializedAsync();
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        if (HubConnection != null)
+        {
+            await HubConnection.DisposeAsync();
+        }
+    }
+}

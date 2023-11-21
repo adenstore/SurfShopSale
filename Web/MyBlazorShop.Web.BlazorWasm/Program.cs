@@ -4,9 +4,10 @@ using MyBlazorShop.Web.BlazorWasm;
 using MyBlazorShop.Libraries.Services.Product;
 using MyBlazorShop.Libraries.Services.Storage;
 using MyBlazorShop.Libraries.Services.ShoppingCart;
+using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.Extensions.Options;
 using System;
-
+using Microsoft.AspNetCore.Builder;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
