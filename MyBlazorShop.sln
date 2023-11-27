@@ -11,6 +11,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBlazorShop.Web.BlazorWasm
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBlazorShop.Libraries.Services", "Libraries\MyBlazorShop.Libraries.Services\MyBlazorShop.Libraries.Services.csproj", "{8A617224-5D67-4B66-B12C-515EC4345A11}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyHostedBlazorShop.Server", "MyHostedBlazorShop\Server\MyHostedBlazorShop.Server.csproj", "{A5259FB3-A621-4B36-A32C-2611BA1EF2AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyHostedBlazorShop.Shared", "MyHostedBlazorShop\Shared\MyHostedBlazorShop.Shared.csproj", "{EA10990E-B944-4AA3-893C-A2B18AE9092B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +29,14 @@ Global
 		{8A617224-5D67-4B66-B12C-515EC4345A11}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8A617224-5D67-4B66-B12C-515EC4345A11}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8A617224-5D67-4B66-B12C-515EC4345A11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5259FB3-A621-4B36-A32C-2611BA1EF2AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5259FB3-A621-4B36-A32C-2611BA1EF2AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5259FB3-A621-4B36-A32C-2611BA1EF2AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5259FB3-A621-4B36-A32C-2611BA1EF2AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA10990E-B944-4AA3-893C-A2B18AE9092B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA10990E-B944-4AA3-893C-A2B18AE9092B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA10990E-B944-4AA3-893C-A2B18AE9092B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA10990E-B944-4AA3-893C-A2B18AE9092B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +44,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{2489693F-1F03-41D8-88E7-9BAD01889B46} = {8CF169B7-D13C-43A8-BD39-75F446982690}
 		{8A617224-5D67-4B66-B12C-515EC4345A11} = {E47542AE-B8E4-4DD1-8751-EE1AA1CDFA3A}
+		{A5259FB3-A621-4B36-A32C-2611BA1EF2AB} = {8CF169B7-D13C-43A8-BD39-75F446982690}
+		{EA10990E-B944-4AA3-893C-A2B18AE9092B} = {8CF169B7-D13C-43A8-BD39-75F446982690}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {16834D7B-43F8-4EEB-8A79-0B1AC43F868F}
