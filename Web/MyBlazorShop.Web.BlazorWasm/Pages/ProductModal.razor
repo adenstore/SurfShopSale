@@ -36,20 +36,39 @@
     <div class="col-5 col-md-3 text-end">Udstyr:</div>
     @foreach (var equipment in surfBoardModel.Equipments)
     {
-        <div class="col-7 col-md-9">@equipment.Name</div> 
+        @(equipment.Name+", ");
     }
 </div>
-
+<img alt="Photo of @surfBoardModel.Name" src="images/@currentimage" onclick="@ChangeImage" class="col-12 col-md-12">
 @code {
 
     [Parameter]
     public SurfBoardModel surfBoardModel { get; set; }
-    
+
+    private string currentimage;
+    private int number = 0;
+
+    private void ChangeImage()
+    {
+        if (number == 0)
+        {
+            currentimage = surfBoardModel.Image;
+        }
+        else
+        {
+            currentimage = surfBoardModel.Name + $"{number % 4}.jpg";            
+        }
+        number++;
+        if(number == 4)
+        {
+            number=0;
+        }
+    }
 
     protected override void OnInitialized()
     {
+        currentimage = surfBoardModel.Image;
 
-       
         base.OnInitialized();
     }
 }
