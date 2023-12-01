@@ -1,4 +1,5 @@
 ﻿@using Microsoft.AspNetCore.SignalR.Client
+@using MyBlazorShop.Libraries.Services.Help.Models
 
 @page "/help"
 @inject NavigationManager navigationManger
@@ -8,7 +9,7 @@
 <form>
     <input @bind-value="Message" type="text">
      : 
-    <button class="button lg solid gold" type="button">Send Besked</button>
+    <button class="button lg solid gold" type="button" @onclick=SendMessageAsync>Send Besked</button>
 </form>
 <br />
 @if (Messages?.Any() ?? false)
@@ -44,6 +45,17 @@
         await HubConnection.StartAsync();
 
         await base.OnInitializedAsync();
+    }
+
+    private async Task SendMessageAsync()
+    {
+        if (HubConnection != null && HubConnection.State == HubConnectionState.Connected)
+        {
+            await HubConnection.SendAsync("SendMessageAsync", Message);
+            Messages.Add(new LiveChatMessage(Message, LiveChatEnum.SENT));
+
+            Message = string.Empty;
+        }
     }
 
     public async ValueTask DisposeAsync()
