@@ -36,6 +36,10 @@ namespace MyBlazorShop.Libraries.Services.Product.Models
             }
         }
 
+        public string Image
+        {
+            get { return Name+".jpg"; }
+        }
         /// <summary>
         /// The full URL of the product
         /// </summary>
